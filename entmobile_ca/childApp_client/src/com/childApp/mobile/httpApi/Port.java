@@ -1,4 +1,4 @@
-package com.childApp.mobile.CAHttpApi;
+package com.childApp.mobile.httpApi;
 
 import com.ca.mobile.AppBasicConfig;
 

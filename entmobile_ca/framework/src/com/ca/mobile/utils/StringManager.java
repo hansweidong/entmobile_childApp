@@ -15,6 +15,7 @@ public class StringManager {
     public static final int TYPE_FUHAO = 2;
     public static final int TYPE_CHINA = 3;
 
+    private final static Pattern emailer = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");//email地址匹配
     // --------------------------------------------------------------------------------------------
     // 对于字符串 添加0或者空格的处理
     public static String addPrefix(int num, String prefix) {
@@ -490,5 +491,16 @@ public class StringManager {
         Pattern p = Pattern.compile("^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$");
         Matcher m = p.matcher(mobiles);
         return m.matches();
+    }
+
+    /**
+     * 判断是不是一个合法的电子邮件地址
+     * @param email
+     * @return
+     */
+    public static boolean isEmail(String email){
+        if(email == null || email.trim().length()==0)
+            return false;
+        return emailer.matcher(email).matches();
     }
 }
