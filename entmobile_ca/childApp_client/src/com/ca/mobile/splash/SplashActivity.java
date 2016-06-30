@@ -1,4 +1,4 @@
-package com.childApp.mobile.splash;
+package com.ca.mobile.splash;
 
 import android.app.Activity;
 import android.os.Bundle;

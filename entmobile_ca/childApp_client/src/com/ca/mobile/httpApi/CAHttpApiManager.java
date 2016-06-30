@@ -1,4 +1,4 @@
-package com.childApp.mobile.httpApi;
+package com.ca.mobile.httpApi;
 
 /**
  * Created by wuweidong on 16-6-29.
