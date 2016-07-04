@@ -1,5 +1,9 @@
 package com.ca.mobile.httpApi;
 
+import com.ca.mobile.net.FastHttpHander;
+
+import java.util.LinkedHashMap;
+
 /**
  * Created by wuweidong on 16-6-29.
  * email:wwdhao163@163.com
@@ -18,4 +22,16 @@ public class CAHttpApiManager {
         return mCAHttpApiManager;
     }
 
+    /**
+     * 账号登陆
+     * @param account
+     * @param pwd
+     * @param object
+     */
+    public void login(String account,String pwd,Object object){
+        LinkedHashMap<String,String> params = new LinkedHashMap<>();
+        params.put("phone",account);
+        params.put("password", pwd);
+        FastHttpHander.ajax(Port.loginUrl,params,object);
+    }
 }

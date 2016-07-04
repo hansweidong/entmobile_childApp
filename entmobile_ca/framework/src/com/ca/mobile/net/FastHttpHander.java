@@ -425,14 +425,13 @@ public class FastHttpHander {
 	}
 
 	private static void http_inject(ResponseEntity entity, Object object, NetConfig config) {
-		if (entity.getStatus() == FastHttp.result_ok) {
-
-		} else {
-
+		if (object instanceof IHttpResponse){
+			((IHttpResponse)object).onResponse(entity);
 		}
 	}
 
 	private static boolean isDestory(Object object) {
+		object = null;
 		return false;
 	}
 }
