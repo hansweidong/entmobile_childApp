@@ -1,9 +1,12 @@
 package com.ca.mobile;
 
 
+import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
 import java.lang.ref.WeakReference;
@@ -13,6 +16,15 @@ import java.lang.ref.WeakReference;
  * email:wwdhao163@163.com
  */
 public class BaseActivity extends FragmentActivity {
+
+    protected Context mContext;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext = this;
+        initInnerHandler();
+    }
 
     protected InnerHandler innerHandler;
 

@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 
 public class CircularImage extends MaskedImage {
+
 	public CircularImage(Context paramContext) {
 		super(paramContext);
 	}
