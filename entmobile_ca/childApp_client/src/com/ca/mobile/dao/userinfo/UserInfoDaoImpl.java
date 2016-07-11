@@ -1,7 +1,7 @@
 package com.ca.mobile.dao.userinfo;
 
 import com.ca.mobile.entity.UserInfoEntity;
-import com.ca.mobile.httpApi.CAHttpApiManager;
+import com.ca.mobile.api.CAHttpApiManager;
 
 /**
  * Created by wuweidong on 16-7-5.

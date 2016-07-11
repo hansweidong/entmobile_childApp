@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.ca.mobile.BaseActivity;
+import com.ca.mobile.dao.userinfo.IUserInfoDao;
+import com.ca.mobile.dao.userinfo.UserInfoDaoImpl;
 import com.ca.mobile.widget.CircularImage;
 import com.ca.mobile.widget.TitleBarLayout;
 import com.mobile.ca.R;
@@ -18,6 +20,8 @@ public class activity_login extends BaseActivity {
     private CircularImage ca_icon;
 
     private TitleBarLayout titleBarLayout;
+
+    private IUserInfoDao userInfoDao;
 
     class TitleBarClickedListener implements TitleBarLayout.ITitleBarClickedListener{
         @Override
@@ -39,6 +43,7 @@ public class activity_login extends BaseActivity {
 
     private void init(){
         initTitleBar();
+        userInfoDao = new UserInfoDaoImpl();
         ca_icon = (CircularImage)findViewById(R.id.ca_icon);
         ca_icon.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),R.drawable.ca_icon));
     }

@@ -1,4 +1,4 @@
-package com.ca.mobile.httpApi;
+package com.ca.mobile.api;
 
 import com.ca.mobile.AppBasicConfig;
 

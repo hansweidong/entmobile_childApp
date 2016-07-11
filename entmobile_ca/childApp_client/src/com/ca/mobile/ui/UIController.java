@@ -9,6 +9,10 @@ import android.content.Intent;
  */
 public class UIController {
 
+    public class UIControllerUtils{
+
+    }
+
     /**
      * 跳转到登陆页面
      * @param from

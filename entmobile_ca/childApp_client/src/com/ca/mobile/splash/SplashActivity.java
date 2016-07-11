@@ -17,13 +17,15 @@ import com.mobile.ca.R;
 /**
  * Created by znxass on 16-5-15.
  */
-public class SplashActivity extends BaseActivity implements IHttpResponse {
+public class SplashActivity extends BaseActivity {
 
     private UserInfoEntity userInfoEntity;
 
     private static final int DelayTime = 3*1000;
 
-    IUserInfoDao mIUserInfoDao;
+    private IUserInfoDao mIUserInfoDao;
+
+    private SplashOnResponse splashOnResponse;
 
     Runnable DelayRunnable = new Runnable() {
         @Override
@@ -39,10 +41,11 @@ public class SplashActivity extends BaseActivity implements IHttpResponse {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         userInfoEntity = FileManager.getObject(this,"");
+        splashOnResponse = new SplashOnResponse();
         boolean netOk = PhoneNetworkManager.isNetworkAvailable(this);
         if (userInfoEntity!=null&&netOk){
             mIUserInfoDao = new UserInfoDaoImpl();
-            mIUserInfoDao.Login(userInfoEntity,this);
+            mIUserInfoDao.Login(userInfoEntity,splashOnResponse);
         }else {
             getHandler().postDelayed(DelayRunnable,DelayTime);
         }
@@ -54,10 +57,12 @@ public class SplashActivity extends BaseActivity implements IHttpResponse {
         getHandler().removeCallbacks(DelayRunnable);
     }
 
-    @Override
-    public void onResponse(ResponseEntity entity) {
-        if (entity.getStatus()== FastHttp.result_ok){
+    static class SplashOnResponse implements IHttpResponse{
+        @Override
+        public void onResponse(ResponseEntity entity) {
+            if (entity.getStatus()== FastHttp.result_ok){
 
+            }
         }
     }
 }
