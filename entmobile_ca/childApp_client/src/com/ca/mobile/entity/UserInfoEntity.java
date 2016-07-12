@@ -127,4 +127,12 @@ public class UserInfoEntity implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    /**
+     * 将json数据赋值给用户信息
+     * @param jsonString
+     */
+    public void ParserJsonStringToEntity(String jsonString){
+
+    }
 }

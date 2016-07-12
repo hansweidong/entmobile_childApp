@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
@@ -58,4 +59,12 @@ public class BaseActivity extends FragmentActivity {
         }
     }
 
+    /**
+     * 通用提示信息
+     *
+     * @param msg
+     */
+    public void ToastMessage(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
 }
