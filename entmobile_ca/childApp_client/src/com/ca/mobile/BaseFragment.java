@@ -1,6 +1,8 @@
 package com.ca.mobile;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 /**
  * Created by wuweidong on 16-7-4.
@@ -9,4 +11,9 @@ import android.support.v4.app.Fragment;
  */
 public class BaseFragment extends Fragment {
 
+    protected View mRootView;
+
+    protected Context getBaseFragmentContext(){
+        return getActivity();
+    }
 }

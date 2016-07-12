@@ -3,6 +3,7 @@ package com.ca.mobile.splash;
 import android.os.Bundle;
 import android.util.Log;
 import com.ca.mobile.BaseActivity;
+import com.ca.mobile.dao.userinfo.IUserInfoDaoImpBehavior;
 import com.ca.mobile.net.FastHttp;
 import com.ca.mobile.net.IHttpResponse;
 import com.ca.mobile.dao.userinfo.IUserInfoDao;
@@ -17,7 +18,7 @@ import com.mobile.ca.R;
 /**
  * Created by znxass on 16-5-15.
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements IUserInfoDaoImpBehavior {
 
     private UserInfoEntity userInfoEntity;
 
@@ -45,6 +46,7 @@ public class SplashActivity extends BaseActivity {
         boolean netOk = PhoneNetworkManager.isNetworkAvailable(this);
         if (userInfoEntity!=null&&netOk){
             mIUserInfoDao = new UserInfoDaoImpl();
+            ((UserInfoDaoImpl)mIUserInfoDao).setIUserInfoDaoImpBehavior(null);
             mIUserInfoDao.Login(userInfoEntity,splashOnResponse);
         }else {
             getHandler().postDelayed(DelayRunnable,DelayTime);
@@ -54,7 +56,14 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        getHandler().removeCallbacks(DelayRunnable);
+        if (mIUserInfoDao!=null){
+            ((UserInfoDaoImpl)mIUserInfoDao).setIUserInfoDaoImpBehavior(null);
+        }
+    }
+
+    @Override
+    public void LoginError(int type) {
+
     }
 
     static class SplashOnResponse implements IHttpResponse{

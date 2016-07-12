@@ -7,6 +7,8 @@ package com.ca.mobile;
  */
 public class AppBasicConfig {
 
+    public static final String APPTag = "ca_app_wwd";//app 标签
+
     /**
      * 环境状态
      * true 为线上环境

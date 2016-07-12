@@ -1,58 +1,47 @@
 package com.ca.mobile.ui;
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
+import com.ca.mobile.AppBasicConfig;
 import com.ca.mobile.BaseActivity;
-import com.ca.mobile.dao.userinfo.IUserInfoDao;
-import com.ca.mobile.dao.userinfo.UserInfoDaoImpl;
-import com.ca.mobile.widget.CircularImage;
-import com.ca.mobile.widget.TitleBarLayout;
+import com.ca.mobile.ui.fragment.Fragment_Login;
 import com.mobile.ca.R;
 
 /**
  * Created by wuweidong on 16-7-10.
  * email:wwdhao163@163.com
  */
-public class activity_login extends BaseActivity {
+public class Activity_Login extends BaseActivity{
 
-    private CircularImage ca_icon;
+    public static final short ForgetPsw_Code = 1; //忘记密码
+    public static final short Register_Code = 2;//注册
+    public static final short Login_Success = 3;//登陆成功
 
-    private TitleBarLayout titleBarLayout;
-
-    private IUserInfoDao userInfoDao;
-
-    class TitleBarClickedListener implements TitleBarLayout.ITitleBarClickedListener{
-        @Override
-        public void onClickedTitleBar(int type) {
-            if (type==TitleBarLayout.RIGHT){
-
-            }
+    @Override
+    protected void HandlerMessage(Message msg) {
+        super.HandlerMessage(msg);
+        if (msg.what==ForgetPsw_Code){
+            Log.d(AppBasicConfig.APPTag,"code="+ForgetPsw_Code);
+        }else if(msg.what==Register_Code){
+            Log.d(AppBasicConfig.APPTag,"code="+Register_Code);
+        }else if (msg.what==Login_Success){
+            Log.d(AppBasicConfig.APPTag,"code="+Login_Success);
         }
     }
-
-    private TitleBarClickedListener titleBarClickedListener = new TitleBarClickedListener();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        init();
-    }
-
-    private void init(){
-        initTitleBar();
-        userInfoDao = new UserInfoDaoImpl();
-        ca_icon = (CircularImage)findViewById(R.id.ca_icon);
-        ca_icon.setImageBitmap(BitmapFactory.decodeResource(mContext.getResources(),R.drawable.ca_icon));
-    }
-
-    private void initTitleBar(){
-        titleBarLayout = (TitleBarLayout)findViewById(R.id.title_bar);
-        titleBarLayout.setTitleBarTextInfo("登陆");
-        titleBarLayout.setRightButtonTextInfo("注册");
-        titleBarLayout.setITitleBarClickedListener(titleBarClickedListener);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        Fragment_Login fragment_login = new Fragment_Login();
+        transaction.add(R.id.login_contaier_rl, fragment_login, Fragment_Login.FRAGMENT_TAG);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 

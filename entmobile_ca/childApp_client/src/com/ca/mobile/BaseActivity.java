@@ -27,6 +27,13 @@ public class BaseActivity extends FragmentActivity {
         initInnerHandler();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (innerHandler!=null)
+            innerHandler.removeCallbacksAndMessages(null);
+    }
+
     protected InnerHandler innerHandler;
 
     public void initInnerHandler(){

@@ -1,12 +1,15 @@
 package com.ca.mobile.entity;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * Created by wuweidong on 16-7-5.
  * email:wwdhao163@163.com
  */
 public class UserInfoEntity implements Serializable {
+
+    private HashMap<String,UserInfoEntity> userInfoEntityCache = new HashMap<>();
 
     private String account;
 
@@ -31,6 +34,13 @@ public class UserInfoEntity implements Serializable {
     private String password;
 
     private String token;
+
+    public UserInfoEntity(){}
+
+    public UserInfoEntity(String account,String psw){
+        this.phoneNumber = account;
+        this.password = psw;
+    }
 
     public String getAccount() {
         return account;
@@ -134,5 +144,23 @@ public class UserInfoEntity implements Serializable {
      */
     public void ParserJsonStringToEntity(String jsonString){
 
+    }
+
+    /**
+     * 通过账号从缓存中获得用户账号
+     * @param account
+     * @return
+     */
+    public UserInfoEntity getUserInfoEntityByCache(String account){
+        return userInfoEntityCache.get(account);
+    }
+
+    /**
+     * 清空缓存
+     */
+    public void clearCache(){
+        if (userInfoEntityCache.size()>0){
+            userInfoEntityCache.clear();
+        }
     }
 }

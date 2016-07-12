@@ -64,6 +64,7 @@ import com.ca.mobile.IocFramework;
  */
 public class FastHttp {
 
+	public static final int TimeOut = 2;//连接超时
 	public static final int result_ok = 0;
 	public static final int result_net_err = 1;
 	private static final String METHOD = "method";
@@ -255,10 +256,12 @@ public class FastHttp {
 			}
 			return responseEntity;
 		} catch (Exception e) {
-			responseEntity.setStatus(result_net_err);
+			if (e.toString().contains("30000ms")) {
+				responseEntity.setStatus(TimeOut);
+			}else{
+				responseEntity.setStatus(result_net_err);
+			}
 			e.printStackTrace();
-			System.out.println(e.toString());
-
 		}
 		return responseEntity;
 	}

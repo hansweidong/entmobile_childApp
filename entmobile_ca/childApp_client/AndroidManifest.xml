@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ca.mobile.ui.activity_login"
+            android:name="com.ca.mobile.ui.Activity_Login"
             android:launchMode="singleTask" />
     </application>
 

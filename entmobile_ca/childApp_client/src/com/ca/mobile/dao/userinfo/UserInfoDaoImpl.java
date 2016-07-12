@@ -2,6 +2,7 @@ package com.ca.mobile.dao.userinfo;
 
 import com.ca.mobile.entity.UserInfoEntity;
 import com.ca.mobile.api.CAHttpApiManager;
+import com.ca.mobile.net.PhoneNetworkManager;
 import com.ca.mobile.utils.MD5;
 
 /**
@@ -13,6 +14,8 @@ public class UserInfoDaoImpl implements IUserInfoDao {
     private String Account;
     private String Password;
 
+    private IUserInfoDaoImpBehavior mUserInfoDaoImpBehavior;
+
     @Override
     public void Login(UserInfoEntity entity,Object object) {
         Account = entity.getPhoneNumber();
@@ -20,6 +23,10 @@ public class UserInfoDaoImpl implements IUserInfoDao {
         if (CheckAccountInfo(Account, Password)) {
             Password =MD5.Md5(Password);
             CAHttpApiManager.newInstance().login(Account,Password,object);
+        }else{
+            if (mUserInfoDaoImpBehavior!=null){
+                mUserInfoDaoImpBehavior.LoginError(IUserInfoDaoImpBehavior.OPERATE_ACCOUT_PSW_IS_NULL);
+            }
         }
     }
 
@@ -54,5 +61,9 @@ public class UserInfoDaoImpl implements IUserInfoDao {
             isRet = true;
         }
         return isRet;
+    }
+
+    public void setIUserInfoDaoImpBehavior(IUserInfoDaoImpBehavior iUserInfoDaoImpBehavior) {
+        this.mUserInfoDaoImpBehavior = iUserInfoDaoImpBehavior;
     }
 }

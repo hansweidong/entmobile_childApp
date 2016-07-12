@@ -431,7 +431,6 @@ public class FastHttpHander {
 	}
 
 	private static boolean isDestory(Object object) {
-		object = null;
 		return false;
 	}
 }

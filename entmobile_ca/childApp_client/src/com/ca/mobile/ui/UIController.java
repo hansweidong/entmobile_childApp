@@ -19,7 +19,7 @@ public class UIController {
      */
     public static void toLoginView(Context from){
         Intent intent = new Intent();
-        intent.setClass(from,activity_login.class);
+        intent.setClass(from,Activity_Login.class);
         from.startActivity(intent);
     }
 
