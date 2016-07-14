@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.ca.mobile.widget.TitleBarLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <LinearLayout
+        android:layout_below="@+id/title_bar"
+        android:id="@+id/phoneNumber_container_ly"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="330dp"
+        android:layout_height="35dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/accout_icon" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:id="@+id/accout_edt"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:ems="10"
+                android:hint="@string/phone_number"
+                android:inputType="textPersonName"
+                android:textSize="15sp">
+                <requestFocus />
+            </EditText>
+            <View
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/gray"/>
+           </RelativeLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_marginTop="25dp"
+        android:background="@drawable/button_click_drawable"
+        android:layout_below="@+id/phoneNumber_container_ly"
+        android:id="@+id/register_btn"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="注册"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        />
+
+</RelativeLayout>

@@ -2,4 +2,6 @@
     <string name="app_name">孩托宝</string>
     <string name="login_username_hint">手机号码/邮箱/用户名</string>
     <string name="login_psw_hint">密码</string>
+    <string name="yzm_txt">验证码</string>
+    <string name="phone_number">手机号码</string>
 </resources>
