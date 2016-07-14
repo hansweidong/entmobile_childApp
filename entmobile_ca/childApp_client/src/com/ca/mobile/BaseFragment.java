@@ -13,7 +13,4 @@ public class BaseFragment extends Fragment {
 
     protected View mRootView;
 
-    protected Context getBaseFragmentContext(){
-        return getActivity();
-    }
 }
