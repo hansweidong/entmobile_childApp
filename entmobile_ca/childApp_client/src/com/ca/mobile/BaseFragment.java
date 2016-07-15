@@ -1,6 +1,7 @@
 package com.ca.mobile;
 
-import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -12,5 +13,29 @@ import android.view.View;
 public class BaseFragment extends Fragment {
 
     protected View mRootView;
+
+    protected Bundle bundle;
+
+    protected boolean backKeyIntercept;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState!=null){
+            bundle = savedInstanceState;
+        }else{
+            bundle = getArguments();
+        }
+    }
+
+    protected boolean onBackProgress(){
+        if (backKeyIntercept){
+            return false;
+        }else{
+            backKeyIntercept = true;
+            return true;
+        }
+    }
+
 
 }

@@ -8,7 +8,10 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
+
+import com.mobile.ca.R;
 
 import java.lang.ref.WeakReference;
 
@@ -17,6 +20,8 @@ import java.lang.ref.WeakReference;
  * email:wwdhao163@163.com
  */
 public class BaseActivity extends FragmentActivity {
+
+    protected BaseFragment mFragmentContent;
 
     protected Context mContext;
 
@@ -73,5 +78,27 @@ public class BaseActivity extends FragmentActivity {
      */
     public void ToastMessage(String msg) {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 切换Fragment
+     *
+     * @param from
+     * @param to
+     * @param FragmentId
+     */
+    public void switchContent(BaseFragment from, BaseFragment to, int FragmentId, String Tag) {
+        if (mFragmentContent != to) {
+            mFragmentContent = to;
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(
+                            R.anim.slide_in_from_right, R.anim.slide_out_from_left);
+            if (!to.isAdded()) {    // 先判断是否被add过
+                transaction.addToBackStack(null);
+                transaction.hide(from).add(FragmentId, to, Tag).commit(); // 隐藏当前的fragment，add下一个到Activity中
+            } else {
+                transaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+            }
+        }
     }
 }

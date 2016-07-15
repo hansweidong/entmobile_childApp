@@ -64,6 +64,11 @@ public class Fragment_Login extends BaseFragment implements IUserInfoDaoImpBehav
 
     private TitleBarClickedListener titleBarClickedListener = new TitleBarClickedListener();
 
+    public static Fragment_Login newInstance(){
+        Fragment_Login fragment_login = new Fragment_Login();
+        return fragment_login;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

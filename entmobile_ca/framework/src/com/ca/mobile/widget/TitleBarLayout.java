@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ca.mobile.framework.R;
+import com.ca.mobile.utils.ScreenManager;
 
 /**
  * Created by wuweidong on 16-7-7.
@@ -105,8 +106,12 @@ public class TitleBarLayout extends RelativeLayout {
      */
     public void setLeftButtonInfo(){
         if (left_container_rl_tv!=null){
+            left_container_rl_tv.setText("");
             left_container_rl_tv.setVisibility(VISIBLE);
             Drawable drawable = mContext.getResources().getDrawable(R.drawable.nav_back);
+            int w = ScreenManager.dip2px(27);
+            int h = ScreenManager.px2dip(22);
+            drawable.setBounds(0,0,w,h);
             left_container_rl_tv.setCompoundDrawables(drawable,null,null,null);
         }
     }

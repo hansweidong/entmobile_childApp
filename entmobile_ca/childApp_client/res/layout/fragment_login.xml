@@ -93,16 +93,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/gray"/>
-
-            <TextView
-                android:id="@+id/btn_forgetPsw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="忘记密码"
-                android:textColor="@color/app_main_color"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -119,4 +109,13 @@
         android:textStyle="bold"
         android:textSize="17sp"
         />
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_forgetPsw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码"
+        android:textColor="@color/app_main_color"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"/>
 </RelativeLayout>
