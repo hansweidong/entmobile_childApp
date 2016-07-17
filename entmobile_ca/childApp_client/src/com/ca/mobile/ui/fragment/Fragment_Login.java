@@ -22,7 +22,7 @@ import com.ca.mobile.net.FastHttp;
 import com.ca.mobile.net.IHttpResponse;
 import com.ca.mobile.net.PhoneNetworkManager;
 import com.ca.mobile.net.ResponseEntity;
-import com.ca.mobile.ui.Activity_Login;
+import com.ca.mobile.ui.login.Activity_Login;
 import com.ca.mobile.widget.CircularImage;
 import com.ca.mobile.widget.TitleBarLayout;
 import com.mobile.ca.R;

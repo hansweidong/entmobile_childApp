@@ -21,7 +21,7 @@ import com.ca.mobile.dao.userinfo.UserInfoDaoImpl;
 import com.ca.mobile.net.FastHttp;
 import com.ca.mobile.net.IHttpResponse;
 import com.ca.mobile.net.ResponseEntity;
-import com.ca.mobile.ui.Activity_Login;
+import com.ca.mobile.ui.login.Activity_Login;
 import com.ca.mobile.utils.ScreenManager;
 import com.ca.mobile.widget.TitleBarLayout;
 import com.mobile.ca.R;
@@ -90,6 +90,7 @@ public class Fragment_Register extends BaseFragment implements IUserInfoDaoImpBe
         loginOnResponse = new LoginOnResponse();
         ((UserInfoDaoImpl)userInfoDao).setIUserInfoDaoImpBehavior(this);
         accout_edt = (EditText)mRootView.findViewById(R.id.accout_edt);
+        yzm_edt = (EditText)mRootView.findViewById(R.id.yzm_edt);
         psw_edt = (EditText)mRootView.findViewById(R.id.password_edt);
         register_btn = (Button)mRootView.findViewById(R.id.register_btn);
         register_btn.setOnClickListener(new View.OnClickListener() {
@@ -188,5 +189,19 @@ public class Fragment_Register extends BaseFragment implements IUserInfoDaoImpBe
            }
             setUIInfo();
         }
+    }
+
+    /**
+     * 注册按钮的处理事件
+     */
+    private void registerClickedEvent(){
+
+    }
+
+    /**
+     * 重置密码的处理事件
+     */
+    private void resetPswClickedEvent(){
+
     }
 }

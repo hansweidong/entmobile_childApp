@@ -16,8 +16,6 @@ public class BaseFragment extends Fragment {
 
     protected Bundle bundle;
 
-    protected boolean backKeyIntercept;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +25,5 @@ public class BaseFragment extends Fragment {
             bundle = getArguments();
         }
     }
-
-    protected boolean onBackProgress(){
-        if (backKeyIntercept){
-            return false;
-        }else{
-            backKeyIntercept = true;
-            return true;
-        }
-    }
-
 
 }

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.ca.mobile.BaseActivity;
 import com.ca.mobile.BaseFragment;
-import com.ca.mobile.ui.Activity_Login;
+import com.ca.mobile.ui.login.Activity_Login;
 import com.ca.mobile.widget.TitleBarLayout;
 import com.mobile.ca.R;
 
@@ -31,6 +31,7 @@ public class Fragment_PlatformPotocol extends BaseFragment {
                 boolean agreeProtocol = true;
                 msg.obj = agreeProtocol;
             }
+            msg.arg1 = Activity_Login.Register_Code;
             ((BaseActivity)getActivity()).getHandler().sendMessage(msg);
         }
     }

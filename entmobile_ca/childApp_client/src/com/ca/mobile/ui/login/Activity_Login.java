@@ -1,11 +1,10 @@
-package com.ca.mobile.ui;
+package com.ca.mobile.ui.login;
 
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-
 import com.ca.mobile.AppBasicConfig;
 import com.ca.mobile.BaseActivity;
 import com.ca.mobile.BaseFragment;
@@ -25,12 +24,14 @@ public class Activity_Login extends BaseActivity{
     public static final short Register_Code = 2;//注册
     public static final short PlatFormProtocol_code = 3;//平台协议
     public static final short Login_Success = 4;//登陆成功
-    private BaseFragment m_CurrentFragment;
-
+    private Fragment_Login fragment_login;
+    private int curCode = Login_Code;
+    private int preCode = Login_Code;
     @Override
     protected void HandlerMessage(Message msg) {
         super.HandlerMessage(msg);
         if (msg.what==ForgetPsw_Code){
+            curCode = ForgetPsw_Code;
             Log.d(AppBasicConfig.APPTag,"code="+ForgetPsw_Code);
             BaseFragment fragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(Fragment_Register.FRAGMENT_TAG);
             if (fragment == null){
@@ -43,8 +44,10 @@ public class Activity_Login extends BaseActivity{
                 bundle.putInt("type",ForgetPsw_Code);
                 fragment.setArguments(bundle);
             }
-            setFragment(Fragment_Register.FRAGMENT_TAG,fragment);
+            preCode = Login_Code;
+            switchContent(fragment_login,fragment,R.id.login_contaier_rl,Fragment_Register.FRAGMENT_TAG,true);
         }else if(msg.what==Register_Code){
+            curCode = Register_Code;
             Log.d(AppBasicConfig.APPTag,"code="+Register_Code);
             BaseFragment fragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(Fragment_Register.FRAGMENT_TAG);
             if (fragment == null){
@@ -63,23 +66,32 @@ public class Activity_Login extends BaseActivity{
                 bundle.putBoolean("agreeProtocol",agreeProtocol);
                 fragment.setArguments(bundle);
             }
-            setFragment(Fragment_Register.FRAGMENT_TAG,fragment);
+            BaseFragment from = fragment_login;
+            if (msg.arg1==Register_Code){
+                preCode = PlatFormProtocol_code;
+                getSupportFragmentManager().popBackStack();
+            }else {
+                preCode = Login_Code;
+                switchContent(from, fragment, R.id.login_contaier_rl, Fragment_Register.FRAGMENT_TAG, true);
+            }
         }else if (msg.what==Login_Success){
             Log.d(AppBasicConfig.APPTag,"code="+Login_Success);
         } else if (msg.what==Login_Code) {
-            Log.d(AppBasicConfig.APPTag,"code="+Login_Code);
-            BaseFragment fragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(Fragment_Login.FRAGMENT_TAG);
-            if (fragment == null){
-                fragment = Fragment_Login.newInstance();
-            }
-            setFragment(Fragment_Login.FRAGMENT_TAG,fragment);
+            curCode = Login_Code;
+            getSupportFragmentManager().popBackStack();
         } else if (msg.what==PlatFormProtocol_code){
+            curCode = PlatFormProtocol_code;
             Log.d(AppBasicConfig.APPTag,"code="+PlatFormProtocol_code);
             BaseFragment fragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(Fragment_PlatformPotocol.FRAGMENT_TAG);
             if (fragment == null){
                 fragment = Fragment_PlatformPotocol.newInstance();
             }
-            setFragment(Fragment_PlatformPotocol.FRAGMENT_TAG,fragment);
+            BaseFragment from = (BaseFragment)getSupportFragmentManager().findFragmentByTag(Fragment_Register.FRAGMENT_TAG);
+            if (from == null){
+                from = Fragment_Register.newInstance();
+            }
+            preCode = Register_Code;
+            switchContent(from,fragment,R.id.login_contaier_rl,Fragment_PlatformPotocol.FRAGMENT_TAG,true);
         }
     }
 
@@ -88,20 +100,23 @@ public class Activity_Login extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        Fragment_Login fragment_login = Fragment_Login.newInstance();
+        fragment_login = Fragment_Login.newInstance();
         transaction.add(R.id.login_contaier_rl, fragment_login, Fragment_Login.FRAGMENT_TAG);
         transaction.addToBackStack(null);
         transaction.commit();
-        m_CurrentFragment = fragment_login;
     }
 
-    /**
-     * 设置显示的fragment
-     * @param tag
-     */
-    private void setFragment(String tag,BaseFragment baseFragment){
-        switchContent(m_CurrentFragment,baseFragment,R.id.login_contaier_rl,tag);
-        m_CurrentFragment = baseFragment;
+    @Override
+    public void onBackPressed() {
+        if (Login_Code==curCode){
+            finish();
+        }else{
+            super.onBackPressed();
+            if (curCode == PlatFormProtocol_code){
+                curCode = Register_Code;
+                preCode = Login_Code;
+            }else
+                curCode = preCode;
+        }
     }
-
 }

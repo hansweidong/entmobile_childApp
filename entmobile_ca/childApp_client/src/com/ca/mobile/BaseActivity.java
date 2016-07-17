@@ -86,13 +86,17 @@ public class BaseActivity extends FragmentActivity {
      * @param from
      * @param to
      * @param FragmentId
+     * @param anim
      */
-    public void switchContent(BaseFragment from, BaseFragment to, int FragmentId, String Tag) {
+    public void switchContent(BaseFragment from, BaseFragment to, int FragmentId, String Tag,boolean anim) {
         if (mFragmentContent != to) {
             mFragmentContent = to;
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(
-                            R.anim.slide_in_from_right, R.anim.slide_out_from_left);
+            if (anim) {
+                transaction.setCustomAnimations(
+                        R.anim.slide_in_from_right, R.anim.slide_out_from_left,
+                        R.anim.slide_in_from_right, R.anim.slide_out_from_left);
+            }
             if (!to.isAdded()) {    // 先判断是否被add过
                 transaction.addToBackStack(null);
                 transaction.hide(from).add(FragmentId, to, Tag).commit(); // 隐藏当前的fragment，add下一个到Activity中
