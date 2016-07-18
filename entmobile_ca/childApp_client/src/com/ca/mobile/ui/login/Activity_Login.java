@@ -66,12 +66,11 @@ public class Activity_Login extends BaseActivity{
                 bundle.putBoolean("agreeProtocol",agreeProtocol);
                 fragment.setArguments(bundle);
             }
+            preCode = Login_Code;
             BaseFragment from = fragment_login;
             if (msg.arg1==Register_Code){
-                preCode = PlatFormProtocol_code;
                 getSupportFragmentManager().popBackStack();
             }else {
-                preCode = Login_Code;
                 switchContent(from, fragment, R.id.login_contaier_rl, Fragment_Register.FRAGMENT_TAG, true);
             }
         }else if (msg.what==Login_Success){
