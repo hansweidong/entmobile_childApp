@@ -167,6 +167,11 @@ public class Fragment_Register extends BaseFragment implements IUserInfoDaoImpBe
 
     }
 
+    @Override
+    public void DebugBehavior(int type) {
+
+    }
+
     class LoginOnResponse implements IHttpResponse {
         @Override
         public void onResponse(ResponseEntity entity) {

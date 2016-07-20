@@ -25,6 +25,9 @@
             android:name="com.ca.mobile.ui.login.Activity_Login"
             android:screenOrientation="portrait"
             android:launchMode="singleTask" />
+        <activity android:name="com.ca.mobile.ui.login.Activity_SelectedRole"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>

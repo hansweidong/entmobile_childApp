@@ -22,7 +22,8 @@ public class UserInfoDaoImpl implements IUserInfoDao {
         Password = entity.getPassword();
         if (CheckAccountInfo(Account, Password)) {
             Password =MD5.Md5(Password);
-            CAHttpApiManager.newInstance().login(Account,Password,object);
+            //CAHttpApiManager.newInstance().login(Account,Password,object);
+            mUserInfoDaoImpBehavior.DebugBehavior(0);
         }else{
             if (mUserInfoDaoImpBehavior!=null){
                 mUserInfoDaoImpBehavior.LoginError(IUserInfoDaoImpBehavior.OPERATE_ACCOUT_PSW_IS_NULL);

@@ -8,6 +8,7 @@ import android.util.Log;
 import com.ca.mobile.AppBasicConfig;
 import com.ca.mobile.BaseActivity;
 import com.ca.mobile.BaseFragment;
+import com.ca.mobile.ui.UIController;
 import com.ca.mobile.ui.fragment.Fragment_Login;
 import com.ca.mobile.ui.fragment.Fragment_PlatformPotocol;
 import com.ca.mobile.ui.fragment.Fragment_Register;
@@ -75,6 +76,8 @@ public class Activity_Login extends BaseActivity{
             }
         }else if (msg.what==Login_Success){
             Log.d(AppBasicConfig.APPTag,"code="+Login_Success);
+            UIController.toSelectedRole(mContext);
+            finish();
         } else if (msg.what==Login_Code) {
             curCode = Login_Code;
             getSupportFragmentManager().popBackStack();

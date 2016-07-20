@@ -14,4 +14,5 @@ public interface IUserInfoDaoImpBehavior {
      */
     void LoginError(int type);
 
+    void DebugBehavior(int type);
 }

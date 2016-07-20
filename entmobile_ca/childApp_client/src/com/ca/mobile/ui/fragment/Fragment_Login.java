@@ -139,6 +139,13 @@ public class Fragment_Login extends BaseFragment implements IUserInfoDaoImpBehav
         }
     }
 
+    @Override
+    public void DebugBehavior(int type) {
+        if (type==0){
+            ((BaseActivity)getActivity()).getHandler().sendEmptyMessage(Activity_Login.Login_Success);
+        }
+    }
+
     class LoginOnResponse implements IHttpResponse {
         @Override
         public void onResponse(ResponseEntity entity) {

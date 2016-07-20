@@ -66,6 +66,11 @@ public class SplashActivity extends BaseActivity implements IUserInfoDaoImpBehav
 
     }
 
+    @Override
+    public void DebugBehavior(int type) {
+
+    }
+
     static class SplashOnResponse implements IHttpResponse{
         @Override
         public void onResponse(ResponseEntity entity) {

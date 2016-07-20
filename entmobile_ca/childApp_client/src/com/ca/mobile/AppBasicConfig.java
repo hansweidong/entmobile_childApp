@@ -7,7 +7,7 @@ package com.ca.mobile;
  */
 public class AppBasicConfig {
 
-    public static final String APPTag = "ca_app_wwd";//app 标签
+    public static final String APPTag = "ca_app";//app 标签
 
     /**
      * 环境状态
