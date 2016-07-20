@@ -2,8 +2,10 @@ package com.ca.mobile;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 /**
- * Created by znxass on 16-6-29.
+ * Created by weidong_wu on 16-6-29.
  */
 public class BaseApp extends Application {
 
@@ -11,6 +13,7 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         AppBasicConfig.EnvInfo = true;
+        LeakCanary.install(this);
         IocFramework.getIocFramework().init(this);
     }
 
