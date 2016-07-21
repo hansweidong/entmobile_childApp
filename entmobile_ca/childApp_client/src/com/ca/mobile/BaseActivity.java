@@ -105,4 +105,24 @@ public class BaseActivity extends FragmentActivity {
             }
         }
     }
+
+    /**
+     * 显示fragment
+     * @param fragment
+     * @param FragmentId
+     * @param tag
+     * @param anim
+     */
+    public void showFragment(BaseFragment fragment,int FragmentId,String tag,boolean anim){
+        if (fragment!=null){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            if (anim){
+                transaction.setCustomAnimations(
+                        R.anim.slide_in_from_right, R.anim.slide_out_from_left,
+                        R.anim.slide_in_from_right, R.anim.slide_out_from_left);
+            }
+            transaction.addToBackStack(null);
+            transaction.add(FragmentId,fragment,tag).commit();
+        }
+    }
 }
