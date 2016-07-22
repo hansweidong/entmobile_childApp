@@ -18,7 +18,7 @@
     <LinearLayout
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/ui_titleBar"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:layout_marginRight="10dp"
             android:text="创建机构"/>
         <TextView
@@ -35,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/app_main_color"
-            android:textSize="15sp"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
             android:text="创建机构"/>
     </LinearLayout>
     <ImageView

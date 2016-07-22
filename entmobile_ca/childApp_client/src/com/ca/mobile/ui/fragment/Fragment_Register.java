@@ -160,6 +160,7 @@ public class Fragment_Register extends BaseFragment implements IUserInfoDaoImpBe
         }
         if (loginOnResponse!=null)
             loginOnResponse = null;
+        titleBarClickedListener = null;
     }
 
     @Override

@@ -66,4 +66,9 @@ public class Fragment_PlatformPotocol extends BaseFragment {
         titleBarLayout.setITitleBarClickedListener(titleBarClickedListener);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        titleBarClickedListener = null;
+    }
 }

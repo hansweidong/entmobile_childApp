@@ -129,6 +129,7 @@ public class Fragment_Login extends BaseFragment implements IUserInfoDaoImpBehav
         }
         if (loginOnResponse!=null)
             loginOnResponse = null;
+        titleBarClickedListener = null;
     }
 
     @Override

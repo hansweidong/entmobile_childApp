@@ -6,6 +6,6 @@
     <string name="phone_number">手机号码</string>
     <string name="input_name">请输入您的名字</string>
     <string name="user_protocol">阅读并同意《平台服务协议》</string>
-    <string name="join_agency_tips">园长先生您好,请填写以下资料创建机构</string>
-    <string name="join_teacher_tips">亲爱的老师您好,请你填写机构短号申请加入</string>
+    <string name="join_agency_tips">%s您好,请填写以下资料创建机构</string>
+    <string name="join_teacher_tips">%s您好,请你填写机构短号申请加入</string>
 </resources>
